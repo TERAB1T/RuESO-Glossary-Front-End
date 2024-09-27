@@ -1,1 +1,1 @@
-# RuESO-Glossary-Front-End
+# RuESO Glossary (Front-End)
