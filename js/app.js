@@ -1,5 +1,6 @@
 (async () => {
     const tableID = '#main-table';
+    let isFirstSearch = true;
 
     $(tableID + ' tfoot th').each(function() {
         const title = $(this).text();
@@ -25,7 +26,7 @@
         pageLength: 100,
         searchHighlight: true,
         pagingType: 'simple_numbers',
-        deferRender: true,
+        deferLoading: true,
         orderCellsTop: true,
         autoWidth: false,
         columnDefs: [
@@ -44,8 +45,6 @@
         .on('page.dt', () => $("html, body").animate({ scrollTop: 0 }, "fast"))
         .DataTable(options);
 
-    table.search('').draw();
-
     table.columns().every(function() {
         const column = this;
 
@@ -62,8 +61,6 @@
         $('input', column.footer())
             .on('keyup.DT search.DT input.DT paste.DT cut.DT', function() { columnSearch(this.value); });
     });
-
-    let isFirstSearch = true;
 
     const mainSearch = DataTable.util.debounce(function (currentValue) {
         if (isFirstSearch) {
@@ -85,8 +82,10 @@
     $('#main-input').on( 'keyup.DT search.DT input.DT paste.DT cut.DT', function () { mainSearch(this.value); });
 
     $('.game-checks input[type=checkbox]').on('change', function() {
-        table
-            .search(table.search())
-            .draw();
+        if (!isFirstSearch) {
+            table
+                .search(table.search())
+                .draw();
+        }
     });
 })();
