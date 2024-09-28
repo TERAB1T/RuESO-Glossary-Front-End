@@ -2,12 +2,13 @@
     const tableID = '#main-table';
     let isFirstSearch = true;
 
-    $(tableID + ' tfoot th').each(function() {
+    $(tableID + ' tfoot th:not(:first)').each(function() {
         const title = $(this).text();
-        $(this).html(`<input type="text" class="form-control form-control-sm" placeholder="Filter by ${title}" />`);
+        $(this).html(`<input type="text" class="form-control form-control-sm" placeholder="Фильтр" />`);
     });
 
     const options = {
+        order: [],
         ajax: {
             url: 'http://localhost:8000/search/',
             data: function (d) {
@@ -29,8 +30,21 @@
         deferLoading: true,
         orderCellsTop: true,
         autoWidth: false,
+        layout: {
+            topStart: null,
+            topEnd: null,
+            bottomStart: 'info',
+            bottomEnd: 'paging'
+        },
         columnDefs: [
-            { width: '2%', targets: 0 },
+            {
+                targets: 0,
+                orderable: false,
+                searchable: false,
+                width: '2%',
+                render: function (data, type, row) {
+                    return `<img src="img/icons/${data}.png" alt="${data}" width="32px">`;
+                } },
             { width: '49%', targets: [1, 2] }
         ],
         initComplete() {
