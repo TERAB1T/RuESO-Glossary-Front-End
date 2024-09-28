@@ -3,13 +3,26 @@
 
     $(tableID + ' tfoot th').each(function() {
         const title = $(this).text();
-        $(this).html(`<input type="text" class="input" placeholder="Filter by ${title}" />`);
+        $(this).html(`<input type="text" class="form-control form-control-sm" placeholder="Filter by ${title}" />`);
     });
 
     const options = {
-        ajax: 'http://localhost:8000/search/',
+        ajax: {
+            url: 'http://localhost:8000/search/',
+            data: function (d) {
+                const checkedGames = [];
+
+                $(".game-checks input[type=checkbox]:checked").each(function() { 
+                    checkedGames.push($(this).attr("name")); 
+                });
+
+                if (checkedGames.length)
+                    d.games = checkedGames.join(',');
+            }
+        },
         processing: true,
         serverSide: true,
+        pageLength: 100,
         searchHighlight: true,
         pagingType: 'simple_numbers',
         deferRender: true,
@@ -48,5 +61,32 @@
 
         $('input', column.footer())
             .on('keyup.DT search.DT input.DT paste.DT cut.DT', function() { columnSearch(this.value); });
+    });
+
+    let isFirstSearch = true;
+
+    const mainSearch = DataTable.util.debounce(function (currentValue) {
+        if (isFirstSearch) {
+            isFirstSearch = false;
+            $('body').removeClass('flex-center');
+        }
+
+        if (currentValue.length < 3) {
+            currentValue = '';
+        };
+
+        if (table.search() !== currentValue) {
+            table
+                .search(currentValue)
+                .draw();
+        }
+    });
+
+    $('#main-input').on( 'keyup.DT search.DT input.DT paste.DT cut.DT', function () { mainSearch(this.value); });
+
+    $('.game-checks input[type=checkbox]').on('change', function() {
+        table
+            .search(table.search())
+            .draw();
     });
 })();

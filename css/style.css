@@ -245,3 +245,50 @@ textarea {
   }
 }
 
+table.dataTable span.highlight {
+  background-color: #FFFF88;
+  border-radius: 0.28571429rem;
+}
+
+table.dataTable span.column_highlight {
+  background-color: #ffcc99;
+  border-radius: 0.28571429rem;
+}
+
+[data-bs-theme=dark] table.dataTable span.highlight {
+  background-color: #372e7d;
+  border-radius: 3px;
+}
+
+[data-bs-theme=dark] table.dataTable span.column_highlight {
+  background-color: #7d6319;
+  border-radius: 3px;
+}
+
+.game-checks {
+  margin-top: 10px;
+  column-gap: 7px;
+}
+
+#main-input {
+  max-width: 584px;
+}
+
+body.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body.flex-center .main-table-wrap {
+  display:none;
+}
+
+body.flex-center .search-wrap {
+  width: 600px;
+}
+
+body {
+  padding: 10px 0;
+}
