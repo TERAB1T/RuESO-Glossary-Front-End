@@ -256,12 +256,12 @@ table.dataTable span.column_highlight {
 }
 
 [data-bs-theme=dark] table.dataTable span.highlight {
-  background-color: #372e7d;
+  background-color: #224563;
   border-radius: 3px;
 }
 
 [data-bs-theme=dark] table.dataTable span.column_highlight {
-  background-color: #7d6319;
+  background-color: #4d4225;
   border-radius: 3px;
 }
 
