@@ -1,4 +1,30 @@
 (async () => {
+    const saveCheckboxes = () => {
+        const checkedCheckboxes = $('.btn-check:checked').map(function () {
+            return $(this).attr('name');
+        }).get();
+
+        localStorage.setItem('games', JSON.stringify(checkedCheckboxes));
+    }
+
+    const localCheckboxes = localStorage.getItem('games');
+
+    if (localCheckboxes) {
+        const savedCheckboxes = JSON.parse(localStorage.getItem('games'));
+
+        $('.btn-check').each(function () {
+            let checkboxName = $(this).attr('name');
+    
+            if (savedCheckboxes.includes(checkboxName)) {
+                $(this).prop('checked', true);
+            } else {
+                $(this).prop('checked', false);
+            }
+        });
+    } else {
+        saveCheckboxes();
+    }
+
     const tableID = '#main-table';
     let isFirstSearch = true;
 
@@ -101,5 +127,7 @@
                 .search(table.search())
                 .draw();
         }
+
+        saveCheckboxes();
     });
 })();
