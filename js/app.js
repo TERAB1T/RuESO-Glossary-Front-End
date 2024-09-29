@@ -22,7 +22,7 @@
                     d.games = checkedGames.join(',');
             }
         },
-        processing: true,
+        processing: true, 
         serverSide: true,
         pageLength: 100,
         searchHighlight: true,
