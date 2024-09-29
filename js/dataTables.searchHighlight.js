@@ -19,8 +19,6 @@
 		if (typeof window === 'undefined') {
 			module.exports = function (root, $) {
 				if ( ! root ) {
-					// CommonJS environments without a window global must pass a
-					// root. This will give an error otherwise
 					root = window;
 				}
 
