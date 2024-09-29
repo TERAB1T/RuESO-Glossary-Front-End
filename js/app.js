@@ -10,7 +10,7 @@
     const options = {
         order: [],
         ajax: {
-            url: 'http://localhost:8000/search/',
+            url: 'http://localhost:8000/search/', 
             data: function (d) {
                 const checkedGames = [];
 
