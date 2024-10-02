@@ -30,7 +30,7 @@
 
     $(tableID + ' tfoot th:not(:first)').each(function() {
         const title = $(this).text();
-        $(this).html(`<input type="text" class="form-control form-control-sm" placeholder="Фильтр" />`);
+        $(this).html(`<input type="search" class="form-control form-control-sm" placeholder="Фильтр" />`);
     });
 
     const options = {
@@ -50,7 +50,7 @@
         },
         processing: true, 
         serverSide: true,
-        pageLength: 100,
+        pageLength: 50,
         searchHighlight: true,
         pagingType: 'simple_numbers',
         deferLoading: true,
