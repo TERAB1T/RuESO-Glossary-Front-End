@@ -270,6 +270,8 @@ table.dataTable span.column_highlight {
   column-gap: 7px;
   row-gap: 7px;
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #main-input {
