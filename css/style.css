@@ -269,6 +269,7 @@ table.dataTable span.column_highlight {
   margin-top: 10px;
   column-gap: 7px;
   row-gap: 7px;
+  max-width: 600px;
 }
 
 #main-input {
