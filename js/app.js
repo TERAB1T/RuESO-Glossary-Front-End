@@ -33,6 +33,22 @@
         $(this).html(`<input type="search" class="form-control form-control-sm" placeholder="Фильтр" />`);
     });
 
+    const getTagName = (tag) => {
+        const tags = {
+            'Tribunal': 'Tribunal',
+            'Bloodmoon': 'Bloodmoon',
+            'Plugin': 'Официальный плагин',
+            'KotN': 'Knights of the Nine',
+            'SI': 'Shivering Isles',
+            'Dawnguard': 'Dawnguard',
+            'Hearthfire': 'Hearthfire',
+            'Dragonborn': 'Dragonborn',
+            'cc': 'Creation Club',
+        };
+
+        return tags[tag];
+    }
+
     const options = {
         order: [],
         ajax: {
@@ -62,16 +78,31 @@
             bottomStart: 'info',
             bottomEnd: 'paging'
         },
-        columnDefs: [
+        columns: [
             {
-                targets: 0,
+                data: 'game',
                 orderable: false,
                 searchable: false,
                 width: '2%',
+                className: 'dt-center',
                 render: function (data, type, row) {
-                    return `<img src="img/icons/${data}.png" alt="${data}" width="32px">`;
-                } },
-            { width: '49%', targets: [1, 2] }
+                    let tag = "";
+
+                    if (row.tag && getTagName(row.tag)) {
+                        tag = `<div class="badge-tag">${getTagName(row.tag)}</div>`;
+                    }
+
+                    return `<img src="img/icons/${data}.png" alt="${data}" width="32px">${tag}`;
+                }
+            },
+            { 
+                data: 'en',
+                width: '49%'
+            },
+            { 
+                data: 'ru',
+                width: '49%'
+            }
         ],
         initComplete() {
             const footerRow = $(tableID + ' tfoot tr');

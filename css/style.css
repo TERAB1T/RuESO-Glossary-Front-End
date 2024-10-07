@@ -296,3 +296,11 @@ body.flex-center .search-wrap {
 body {
   padding: 10px 0;
 }
+
+.badge-tag {
+  padding: 0;
+  font-weight: 400;
+  color: #d5d5d5;
+  font-size: 10px;
+  margin-top: 5px;
+}
