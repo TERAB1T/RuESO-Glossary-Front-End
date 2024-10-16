@@ -79,9 +79,9 @@ function highlight(body, table) {
         table.columns().every(function () {
             var column = this;
             column.nodes().flatten().to$().unhighlight({ className: 'column_highlight' });
-            column.nodes().flatten().to$().highlight(column.search().trim(), { className: 'column_highlight' });
+            column.nodes().flatten().to$().highlight(column.search().trim().replace(/’/, '\''), { className: 'column_highlight' });
         });
-        body.highlight(table.search().trim());
+        body.highlight(table.search().trim().replace(/’/, '\''));
     }
 }
 // Listen for DataTables initialisations
