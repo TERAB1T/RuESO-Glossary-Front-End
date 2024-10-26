@@ -115,3 +115,15 @@ body {
 .table>:not(caption)>*>* {
   color: #f7f7f7;
 }
+
+.game-icon {
+  position: sticky;
+  top: 8px;
+}
+
+.type-tag {
+  position: sticky;
+  top: 8px;
+  color:#b7b7b7;
+  font-size: 14px;
+}

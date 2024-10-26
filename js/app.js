@@ -92,16 +92,23 @@
                         tag = `<div class="badge-tag">${getTagName(row.tag)}</div>`;
                     }
 
-                    return `<img src="img/icons/${data}.png" alt="${data}" width="32px">${tag}`;
+                    return `<div class="game-icon"><img src="img/icons/${data}.png" alt="${data}" width="32px">${tag}</div>`;
+                }
+            },
+            { 
+                data: 'type',
+                width: '8%',
+                render: function (data, type, row) {
+                    return `<div class="type-tag">${data}</div>`;
                 }
             },
             { 
                 data: 'en',
-                width: '49%'
+                width: '45%'
             },
             { 
                 data: 'ru',
-                width: '49%'
+                width: '45%'
             }
         ],
         initComplete() {
