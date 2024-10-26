@@ -99,6 +99,10 @@
                 data: 'type',
                 width: '8%',
                 render: function (data, type, row) {
+                    if (!data || data === "null") {
+                        data = "Н/Д";
+                    }
+
                     return `<div class="type-tag">${data}</div>`;
                 }
             },
