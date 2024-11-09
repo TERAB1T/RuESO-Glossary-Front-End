@@ -49,6 +49,13 @@
         return tags[tag];
     }
 
+    const replaceImg = (src, game, lang) => {
+        src = src.replace(/\[IMG=&quot;(.*?)&quot;\]/g, (match, p1) => {
+            return `<img src="img/${game}/${lang}/${p1}" class="book-image">`;
+        });
+        return src;
+    }
+
     const options = {
         order: [],
         ajax: {
@@ -108,11 +115,33 @@
             },
             { 
                 data: 'en',
-                width: '45%'
+                width: '45%',
+                render: function (data, type, row) {
+                    if (!data || data === "null") {
+                        data = "";
+                    }
+
+                    if (data.includes('[IMG=')) {
+                        return replaceImg(data, row.game, 'en');
+                    }
+
+                    return data;
+                }
             },
             { 
                 data: 'ru',
-                width: '45%'
+                width: '45%',
+                render: function (data, type, row) {
+                    if (!data || data === "null") {
+                        data = "";
+                    }
+
+                    if (data.includes('[IMG=')) {
+                        return replaceImg(data, row.game, 'ru');
+                    }
+
+                    return data;
+                }
             }
         ],
         initComplete() {
