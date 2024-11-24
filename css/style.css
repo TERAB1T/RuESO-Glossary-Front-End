@@ -133,6 +133,10 @@ body {
   background: url('../img/mappaper01.jpg');
 }
 
+.book-image-no-bg {
+  max-width: 100%;
+}
+
 .book-image-center {
   display: block;
   margin-left: auto;

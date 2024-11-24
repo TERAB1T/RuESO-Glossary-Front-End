@@ -51,9 +51,18 @@
 
     const replaceImg = (src, game, lang) => {
         src = src.replace(/\[IMG=&quot;(.*?)&quot;\]/g, (match, p1) => {
-            return `<img src="img/${game}/${lang}/${p1}" class="book-image">`;
+            if (game == 'eso') {
+                const [src, width, height] = p1.split(':');
+                return `<img src="img/${game}/${src}" width="${width}" height="${height}" class="book-image-no-bg">`;
+            } else {
+                return `<img src="img/${game}/${lang}/${p1}" class="book-image">`;
+            }
         });
         return src;
+    }
+
+    const replaceColor = (src) => {
+        return src.replace(/\[C=([0-9a-f]{6})\](.*?)\[\/C\]/gi, "<span style=\"color: #$1\">$2</span>");
     }
 
     const options = {
@@ -122,7 +131,11 @@
                     }
 
                     if (data.includes('[IMG=')) {
-                        return replaceImg(data, row.game, 'en');
+                        data = replaceImg(data, row.game, 'en');
+                    }
+
+                    if (data.includes('[C=')) {
+                        data = replaceColor(data);
                     }
 
                     return data;
@@ -137,7 +150,11 @@
                     }
 
                     if (data.includes('[IMG=')) {
-                        return replaceImg(data, row.game, 'ru');
+                        data = replaceImg(data, row.game, 'en');
+                    }
+
+                    if (data.includes('[C=')) {
+                        data = replaceColor(data);
                     }
 
                     return data;
