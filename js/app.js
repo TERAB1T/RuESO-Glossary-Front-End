@@ -62,7 +62,7 @@
     }
 
     const replaceColor = (src) => {
-        return src.replace(/\[C=([0-9a-f]{6})\](.*?)\[\/C\]/gi, "<span style=\"color: #$1\">$2</span>");
+        return src.replace(/\[C=([0-9a-f]{6})\](.*?)\[\/C\]/gis, "<span style=\"color: #$1\">$2</span>");
     }
 
     const options = {
