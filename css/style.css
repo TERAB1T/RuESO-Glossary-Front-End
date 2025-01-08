@@ -49,7 +49,9 @@ textarea {
   resize: vertical;
 }
 
-
+[data-bs-theme=dark] {
+  --bs-body-bg: #171821;
+}
 
 table.dataTable span.highlight {
   background-color: #FFFF88;
@@ -72,7 +74,7 @@ table.dataTable span.column_highlight {
 }
 
 .game-checks {
-  margin-top: 10px;
+  margin-top: 20px;
   column-gap: 7px;
   row-gap: 7px;
   max-width: 600px;
@@ -80,8 +82,32 @@ table.dataTable span.column_highlight {
   margin-right: auto;
 }
 
+input[type="search"] {
+  background-color: #21222d;
+  color: #f7f7f7;
+  border: 0;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
 #main-input {
   max-width: 584px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNicgaGVpZ2h0PScxNicgdmlld0JveD0nMCAwIDE2IDE2Jz48cGF0aCBmaWxsPScjOWFhMGE2JyBkPSdNMTEuNzQyIDEwLjM0NGE2LjUgNi41IDAgMSAwLTEuMzk3IDEuMzk4aC0uMDAxYy4wMy4wNC4wNjIuMDc4LjA5OC4xMTVsMy44NSAzLjg1YTEgMSAwIDAgMCAxLjQxNS0xLjQxNGwtMy44NS0zLjg1YTEuMDA3IDEuMDA3IDAgMCAwLS4xMTUtLjF6TTEyIDYuNWE1LjUgNS41IDAgMSAxLTExIDAgNS41IDUuNSAwIDAgMSAxMSAweic+PC9wYXRoPjwvc3ZnPg==");
+  background-position: 12px center; 
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+input[type="search"]:focus {
+  background-color: #2b2b36;
+  box-shadow: none;
+}
+
+input[type="search"]:hover {
+  background-color: #2c2d33;
+}
+
+input[type="search"]::placeholder {
+  color: #626269;
 }
 
 body.flex-center {
@@ -101,6 +127,18 @@ body.flex-center .search-wrap {
 
 body {
   padding: 10px 0;
+}
+
+table.dataTable th {
+  color: #87888c;
+}
+
+table.dataTable th, table.dataTable tr {
+  border-color: #343541;
+}
+
+table.dataTable td {
+  padding: 1rem .5rem;
 }
 
 .badge-tag {
@@ -141,4 +179,21 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.game-checks .btn {
+  border-color: #2b2b36;
+}
+
+.game-checks .btn-check:checked+.btn {
+  border-color: #2b2b36;
+  background: #2b2b36;
+}
+
+body:not(.flex-center) .game-checks {
+  margin-top: 10px;
+}
+
+body:not(.flex-center) .game-checks .btn span {
+  display: none;
 }

@@ -22,6 +22,7 @@
             }
         });
     } else {
+        $('#btn-check-eso').prop('checked', true);
         saveCheckboxes();
     }
 
@@ -66,6 +67,12 @@
     }
 
     const options = {
+        language: {
+            info: "Результаты с _START_ по _END_ (всего: _TOTAL_)",
+            infoEmpty: '',
+            zeroRecords: 'Ничего не найдено',
+            emptyTable: ''
+        },
         order: [],
         ajax: {
             url: 'http://localhost:8000/search/', 
@@ -194,6 +201,9 @@
         if (isFirstSearch) {
             isFirstSearch = false;
             $('body').removeClass('flex-center');
+
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         }
 
         if (currentValue.length < 3) {
