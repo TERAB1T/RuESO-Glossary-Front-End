@@ -71,7 +71,8 @@
             info: "Результаты с _START_ по _END_ (всего: _TOTAL_)",
             infoEmpty: '',
             zeroRecords: 'Ничего не найдено',
-            emptyTable: ''
+            emptyTable: '',
+            thousands: ' ',
         },
         order: [],
         ajax: {
