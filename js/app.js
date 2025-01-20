@@ -158,7 +158,7 @@
                     }
 
                     if (data.includes('[IMG=')) {
-                        data = replaceImg(data, row.game, 'en');
+                        data = replaceImg(data, row.game, 'ru');
                     }
 
                     if (data.includes('[C=')) {
