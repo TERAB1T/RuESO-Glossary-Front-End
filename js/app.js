@@ -76,7 +76,7 @@
         },
         order: [],
         ajax: {
-            url: 'http://localhost:8000/search/', 
+            url: 'http://localhost:8000/glossary/', 
             data: function (d) {
                 const checkedGames = [];
 
